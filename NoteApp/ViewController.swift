@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UITableViewController {
 
     let context = (UIApplication.shared.delegate as! AppDelegate)
     .persistentContainer.viewContext
     
-    let notes = [Notes]()
+    var notes = [Notes]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +58,8 @@ class ViewController: UITableViewController {
     
     func loadNotes(with request: NSFetchRequest<Notes> = Notes.fetchRequest()){
         
-        do{
+        
+        do {
             notes = try context.fetch(request)
         }
         
