@@ -64,7 +64,7 @@ class ViewController: UITableViewController {
         }
         
         catch{
-            print("Erro fetching Notes\(error)")
+            print("Error fetching Notes\(error)")
         }
         
         tableView.reloadData()
@@ -72,6 +72,32 @@ class ViewController: UITableViewController {
     
     
     // MARK: - Add Notes
+    
+    
+    @IBAction func addButton(_ sender: UIBarButtonItem) {
+        
+        var textField = UITextField()
+        
+        let alert  = UIAlertController(title: "Add New Note", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Add Note", style: .default) { (action) in
+
+            
+            let newNote = Notes(context: self.context)
+            newNote.title = textField.text!
+            self.notes.append(newNote)
+            self.saveNotes()
+        }
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = ""
+            textField = alertTextField
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+         
+    }
     
     
     // MARK: - Table view Delegate methods

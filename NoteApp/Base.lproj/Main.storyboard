@@ -40,6 +40,9 @@
                     <navigationItem key="navigationItem" title="Notes" id="EBI-Rt-zjV">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dDx-qC-XPs">
                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <connections>
+                                <action selector="addButton:" destination="AwD-tE-VXl" id="L1Q-fv-lEx"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
