@@ -90,7 +90,7 @@ class ViewController: UITableViewController {
         }
         
         alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = ""
+            alertTextField.placeholder = "Create new note"
             textField = alertTextField
         }
         
