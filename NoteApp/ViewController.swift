@@ -30,10 +30,17 @@ class ViewController: UITableViewController {
     
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Notescell", for: indexPath)
+        
+        let item = notes[indexPath.row]
+        cell.textLabel?.text = item.title
+        
+        return cell
     }
     
     // MARK: - Data manipluations
+    
     
     
     // MARK: - Table view Delegate methods
