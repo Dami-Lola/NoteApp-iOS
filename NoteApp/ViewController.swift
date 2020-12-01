@@ -17,6 +17,8 @@ class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadNotes()
         // Do any additional setup after loading the view.
     }
 
@@ -41,11 +43,36 @@ class ViewController: UITableViewController {
     
     // MARK: - Data manipluations
     
+    func saveNotes(){
+        
+        do {
+            try context.save()
+        }
+        catch{
+            print("Error saving Note\(error)")
+        }
+    
+        tableView.reloadData()
+    }
+    
+    func loadNotes(with request: NSFetchRequest<Notes> = Notes.fetchRequest()){
+        
+        do{
+            notes = try context.fetch(request)
+        }
+        
+        catch{
+            print("Erro fetching Notes\(error)")
+        }
+        
+        tableView.reloadData()
+    }
+    
+    
+    // MARK: - Add Notes
     
     
     // MARK: - Table view Delegate methods
-    
-    // MARK: - Add Notes
 
 }
 
