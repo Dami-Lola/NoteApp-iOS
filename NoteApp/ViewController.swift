@@ -104,7 +104,30 @@ class ViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        var textField = UITextField()
+        
+        let item = self.notes[indexPath.row].title
+//        print(item)
+        
+        let alert  = UIAlertController(title: "Update Note", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Update", style: .default) { (action) in
+            
+            
+            self.notes[indexPath.row].setValue(textField.text!, forKey: "title")
+            self.saveNotes()
+        }
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.text = item
+            textField = alertTextField
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
         
     }
 }
